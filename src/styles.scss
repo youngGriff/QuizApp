@@ -1,10 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-body,html{
+body, html, app-root {
   height: 100%;
+}
+app-root{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .form-control.ng-touched.ng-invalid {
   border: 1px solid #dc3545;
 }
+
 .form-control.ng-valid {
   border: 1px solid #28a745;
 }

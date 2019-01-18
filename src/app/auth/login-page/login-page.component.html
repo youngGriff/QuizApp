@@ -9,6 +9,7 @@
           <input type="email"
                  ngModel
                  required
+                 maxlength="100"
                  id="email"
                  #email="ngModel"
                  class="form-control"
@@ -34,10 +35,17 @@
             It must contain more than 6 characters and less than 100, with at least one digit and one uppercase letter.
           </div>
         </div>
+
         <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Submit</button>
+        <br>
+        <button type="button" (click)="googleSignIn()" class="btn mt-2 btn-danger">SignIn with Google</button>
       </form>
       <br>
-      <a  routerLink="/register">Don't have an account?</a>
+      <a routerLink="/register">Don't have an account?</a>
+      <div *ngIf="authError"
+           class="alert alert-danger mt-2">
+        {{authError}}
+      </div>
     </div>
   </div>
 </div>
