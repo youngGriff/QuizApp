@@ -14,6 +14,11 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { HomeComponent } from './home/home.component';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
+import { QuizListComponent } from './quiz/quiz-list/quiz-list.component';
+import { QuizItemComponent } from './quiz/quiz-list/quiz-item/quiz-item.component';
+import { QuizWalkthroughComponent } from './quiz/quiz-walkthrough/quiz-walkthrough.component';
+import { QuizQuestionComponent } from './quiz/quiz-walkthrough/quiz-question/quiz-question.component';
+import { ResultComponent } from './quiz/result/result.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
     RegisterPageComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    QuizListComponent,
+    QuizItemComponent,
+    QuizWalkthroughComponent,
+    QuizQuestionComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

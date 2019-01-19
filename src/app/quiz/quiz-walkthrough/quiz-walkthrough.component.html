@@ -1,0 +1,5 @@
+<form class=" p-3">
+  <app-quiz-question [questionId]="i" [question]="question"
+                     *ngFor="let question of quiz.questions;let i = index"></app-quiz-question>
+  <button type="button" (click)="onSubmit()" class="btn btn-success">Submit</button>
+</form>

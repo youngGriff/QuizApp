@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../auth/auth.service';
 import {Subscription} from 'rxjs';
 import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private isLogged = false;
 
   constructor(private authService: AuthService,
-              private spinnerService: Ng4LoadingSpinnerService) {
+              private spinnerService: Ng4LoadingSpinnerService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -26,7 +28,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onLoggedOut() {
     this.spinnerService.show();
     this.authService.logout()
-      .finally(() => this.spinnerService.hide());
+      .finally(() => {
+        this.spinnerService.hide();
+      })
+      .catch(() => this.router.navigate(['/login'])
+      );
   }
 
   ngOnDestroy(): void {

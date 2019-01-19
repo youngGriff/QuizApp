@@ -29,13 +29,11 @@ export class LoginPageComponent implements OnInit {
       .then(() => {
         this.authError = null;
         this.router.navigate(['/']);
-
       })
       .catch((err) => {
         this.authError = err;
       });
   }
-
   googleSignIn() {
     this.spinnerService.show();
     this.authService.doGoogleLogin()
