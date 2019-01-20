@@ -8,6 +8,7 @@ import {QuizResult} from '../shared/result.model';
 export class ResultService {
   private currentQuiz: Quiz;
   private questionsAnswers: number[] = [];
+  private results: QuizResult[] = [];
 
   constructor() {
   }
@@ -22,13 +23,19 @@ export class ResultService {
     this.questionsAnswers[questionIndex] = answerIndex;
   }
 
-  finishQuiz(): QuizResult {
+  getResultById(id: number) {
+    return this.results.slice()[id];
+  }
+
+  finishQuiz(): number {
     let correctAnswers = 0;
     this.questionsAnswers.forEach((value, index) => {
       if (this.currentQuiz.questions[index].correctAnswerIndex === value) {
         correctAnswers++;
       }
     });
-    return new QuizResult(this.currentQuiz.questions.length, correctAnswers);
+    const result = new QuizResult(this.currentQuiz.questions.length, correctAnswers);
+    this.results.push(result);
+    return this.results.length - 1;
   }
 }

@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Quiz} from '../../shared/quiz.model';
 import {QuizService} from '../quiz.service';
-import {ActivatedRoute} from '@angular/router';
-import {NgForm} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ResultService} from '../result.service';
 
 @Component({
@@ -12,10 +11,11 @@ import {ResultService} from '../result.service';
 })
 export class QuizWalkthroughComponent implements OnInit {
 
-  private quiz: Quiz;
+  quiz: Quiz;
 
   constructor(private quizService: QuizService,
               private resultService: ResultService,
+              private router: Router,
               private route: ActivatedRoute) {
   }
 
@@ -26,6 +26,7 @@ export class QuizWalkthroughComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.resultService.finishQuiz());
+    const resultId = this.resultService.finishQuiz();
+    this.router.navigate(['/results', resultId], {});
   }
 }

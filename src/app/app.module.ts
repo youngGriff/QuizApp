@@ -12,13 +12,13 @@ import {environment} from './environments/environments';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
-import { HomeComponent } from './home/home.component';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import { QuizListComponent } from './quiz/quiz-list/quiz-list.component';
 import { QuizItemComponent } from './quiz/quiz-list/quiz-item/quiz-item.component';
 import { QuizWalkthroughComponent } from './quiz/quiz-walkthrough/quiz-walkthrough.component';
 import { QuizQuestionComponent } from './quiz/quiz-walkthrough/quiz-question/quiz-question.component';
 import { ResultComponent } from './quiz/result/result.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +27,12 @@ import { ResultComponent } from './quiz/result/result.component';
     RegisterPageComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent,
     QuizListComponent,
     QuizItemComponent,
     QuizWalkthroughComponent,
     QuizQuestionComponent,
-    ResultComponent
+    ResultComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

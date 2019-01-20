@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
-  private isLogged = false;
+   isLogged = false;
 
   constructor(private authService: AuthService,
               private spinnerService: Ng4LoadingSpinnerService,
@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .finally(() => {
         this.spinnerService.hide();
       })
-      .catch(() => this.router.navigate(['/login'])
+      .then(() => this.router.navigate(['/login'])
       );
   }
 
