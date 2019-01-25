@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ResultService} from '../result.service';
 import {Observable, Subscription} from 'rxjs';
 import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
+import {DocumentReference} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-quiz-walkthrough',
@@ -36,7 +37,12 @@ export class QuizWalkthroughComponent implements OnInit {
   }
 
   onSubmit() {
-    const resultId = this.resultService.finishQuiz();
-    this.router.navigate(['/results', resultId], {});
+    this.spinnerService.show();
+    this.resultService.finishQuiz().then((doc: DocumentReference) => {
+      const resultId = doc.id;
+      this.router.navigate(['/results', resultId], {});
+      this.spinnerService.hide();
+    });
+
   }
 }

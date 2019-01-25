@@ -1,4 +1,4 @@
-<div class="jumbotron h-100">
+<div class="jumbotron h-100" *ngIf="result">
   <h1 class="display-4 text-center" >Your result is:</h1>
   <p class="lead text-center">{{result.questionsCorrect}}/{{result.questionsCount}}</p>
 </div>

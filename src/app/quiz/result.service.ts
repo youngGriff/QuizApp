@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Quiz} from '../shared/quiz.model';
 import {QuizResult} from '../shared/result.model';
+import {AngularFirestore, DocumentReference} from '@angular/fire/firestore';
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +11,9 @@ import {QuizResult} from '../shared/result.model';
 export class ResultService {
   private currentQuiz: Quiz;
   private questionsAnswers: number[] = [];
-  private results: QuizResult[] = [];
+  private firestorePath = 'results';
 
-  constructor() {
+  constructor(private firestore: AngularFirestore) {
   }
 
   public startQuiz(quiz: Quiz) {
@@ -23,19 +26,24 @@ export class ResultService {
     this.questionsAnswers[questionIndex] = answerIndex;
   }
 
-  getResultById(id: number) {
-    return this.results.slice()[id];
+  getResultById(id: string): Observable<QuizResult> {
+    return this.firestore.doc(`${this.firestorePath}/${id}`)
+      .get()
+      .pipe(
+        map((value) => {
+          return {id: value.id, ...value.data()} as QuizResult;
+        })
+      );
   }
 
-  finishQuiz(): number {
+  finishQuiz(): Promise<DocumentReference> {
     let correctAnswers = 0;
     this.questionsAnswers.forEach((value, index) => {
       if (this.currentQuiz.questions[index].correctAnswerIndex === value) {
         correctAnswers++;
       }
     });
-    const result = new QuizResult(this.currentQuiz.questions.length, correctAnswers);
-    this.results.push(result);
-    return this.results.length - 1;
+    const result = new QuizResult(this.currentQuiz.questions.length, correctAnswers, null);
+    return this.firestore.collection(this.firestorePath).add({...result});
   }
 }
