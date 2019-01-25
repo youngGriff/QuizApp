@@ -1,7 +1,9 @@
 export class Quiz {
-  constructor(public title: string,
-              public description: string,
-              public questions: Question[]) {
+  constructor(
+    public id: string,
+    public title: string,
+    public description: string,
+    public questions: Question[]) {
   }
 }
 

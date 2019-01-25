@@ -3,6 +3,6 @@
     <h5 class="card-title text-primary">{{quiz.title}}</h5>
     <h6 class="card-subtitle">{{quiz.questions.length}} questions</h6>
     <p class="card-text text-secondary">{{quiz.description}}</p>
-    <a [routerLink]="'quiz/'+ id" class="card-link">Start</a>
+    <a [routerLink]="'quiz/'+ quiz.id" class="card-link">Start</a>
   </div>
 </div>

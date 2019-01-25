@@ -1,8 +1,8 @@
-#Quiz App
+# Quiz App
 
 [Demo](https://quizapp-e897d.firebaseapp.com/)
 
-##Todo
+## Todo
 - [ ] Firebase database/firestore
 - [ ] Better results
 - [ ] isOwner Guard

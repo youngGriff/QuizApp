@@ -1,0 +1,74 @@
+[
+  {
+    "title": "History test",
+    "description": "A small test to check your history knowledge",
+    "questions": [
+      {
+        "questionText": "World War I began in which year?",
+        "answers": [
+          "1923",
+          "1938",
+          "1917",
+          "1914"
+        ],
+        "correctAnswerIndex": 3
+      },
+      {
+        "questionText": "Adolf Hitler was born in which country?",
+        "answers": [
+          "France",
+          "Germany",
+          "Austria",
+          "Hungary"
+        ],
+        "correctAnswerIndex": 2
+      },
+      {
+        "questionText": "John F. Kennedy was assassinated in:",
+        "answers": [
+          "New York",
+          "Austin",
+          "Dallas",
+          "Miami"
+        ],
+        "correctAnswerIndex": 2
+      }
+    ]
+  },
+  {
+    "title": "History test",
+    "description": "A small test to check your history knowledge",
+    "questions": [
+      {
+        "questionText": "World War I began in which year?",
+        "answers": [
+          "1923",
+          "1938",
+          "1917",
+          "1914"
+        ],
+        "correctAnswerIndex": 3
+      },
+      {
+        "questionText": "Adolf Hitler was born in which country?",
+        "answers": [
+          "France",
+          "Germany",
+          "Austria",
+          "Hungary"
+        ],
+        "correctAnswerIndex": 2
+      },
+      {
+        "questionText": "John F. Kennedy was assassinated in:",
+        "answers": [
+          "New York",
+          "Austin",
+          "Dallas",
+          "Miami"
+        ],
+        "correctAnswerIndex": 2
+      }
+    ]
+  }
+]

@@ -1,34 +1,42 @@
 import {Injectable} from '@angular/core';
 import {Question, Quiz} from '../shared/quiz.model';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
-  private quizList: Quiz[] = [
-    new Quiz('History test', 'A small test to check your history knowledge', [
-        new Question('World War I began in which year?', ['1923', '1938', '1917', '1914'], 3),
-        new Question('Adolf Hitler was born in which country?', ['France', 'Germany', 'Austria', 'Hungary'], 2),
-        new Question('John F. Kennedy was assassinated in:', ['New York', 'Austin', 'Dallas', 'Miami'], 2),
-      ]
-    ),
-    new Quiz('History test', 'A small test to check your history knowledge', [
-        new Question('World War I began in which year?', ['1923', '1938', '1917', '1914'], 3),
-        new Question('Adolf Hitler was born in which country?', ['France', 'Germany', 'Austria', 'Hungary'], 2),
-        new Question('John F. Kennedy was assassinated in:', ['New York', 'Austin', 'Dallas', 'Miami'], 2),
-      ]
-    ),
-  ];
+  quizList$: Observable<Quiz[]>;
 
-  constructor() {
+  constructor(private firestore: AngularFirestore) {
+    this.quizList$ = this.firestore
+      .collection('quizs')
+      .snapshotChanges()
+      .pipe(
+        map((data) => {
+          return data.map((e) => {
+              return {id: e.payload.doc.id, ...e.payload.doc.data()} as Quiz;
+            }
+          );
+        }),
+      );
   }
 
-  getQuizList(): Quiz[] {
-    return this.quizList.slice();
+
+
+  getQuizList(): Observable<Quiz[]> {
+    return this.quizList$;
   }
 
-  getQuizById(i: number): Quiz {
-    return this.quizList.slice()[i];
+  getQuizById(id: string): Observable<Quiz> {
+    return this.firestore.doc(`quizs/${id}`).get().pipe(
+      map((value) => {
+        return {id: value.id, ...value.data()} as Quiz;
+      })
+    );
   }
+
 }
 

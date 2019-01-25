@@ -19,6 +19,7 @@ import { QuizWalkthroughComponent } from './quiz/quiz-walkthrough/quiz-walkthrou
 import { QuizQuestionComponent } from './quiz/quiz-walkthrough/quiz-question/quiz-question.component';
 import { ResultComponent } from './quiz/result/result.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireDatabaseModule,
+    AngularFirestoreModule,
     Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [],

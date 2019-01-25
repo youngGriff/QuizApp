@@ -8,7 +8,6 @@ import {Quiz} from '../../../shared/quiz.model';
 })
 export class QuizItemComponent implements OnInit {
   @Input() quiz: Quiz;
-  @Input() id: number;
 
   constructor() {
   }
